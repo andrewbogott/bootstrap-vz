@@ -11,7 +11,7 @@ class LoopbackVolume(Volume):
 
 	def _before_create(self, e):
 		self.image_path = e.image_path
-		vol_size = str(self.size.get_qty_in('MiB')) + 'M'
+		vol_size = str(self.size.get_qty_in('MiB') + 1) + 'M'
 		log_check_call(['qemu-img', 'create', '-f', 'raw', self.image_path, vol_size])
 
 	def _before_attach(self, e):
