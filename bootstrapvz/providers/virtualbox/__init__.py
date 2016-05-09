@@ -1,5 +1,6 @@
 from bootstrapvz.common import task_groups
 import tasks.packages
+import tasks.boot
 from bootstrapvz.common.tasks import image
 from bootstrapvz.common.tasks import loopback
 
@@ -17,6 +18,7 @@ def resolve_tasks(taskset, manifest):
 	                loopback.AddRequiredCommands,
 	                loopback.Create,
 	                image.MoveImage,
+	                tasks.boot.ConfigureGrub,
 	                ])
 
 	if manifest.provider.get('guest_additions', False):
